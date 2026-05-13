@@ -1,0 +1,212 @@
+/* src/styles/LandingPage.css */
+/* =============================================
+   MAGICAL LANDING PAGE STYLES
+   ============================================= */
+
+/* Main container — full screen, dark bg */
+.landing-container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;      /* center vertically */
+  justify-content: center;  /* center horizontally */
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at center,
+    #0d0d2b 0%,      /* dark blue in center */
+    #050510 70%,     /* almost black at edges */
+    #000000 100%
+  );
+}
+
+/* Dark overlay on top of particles */
+.landing-overlay {
+  position: absolute;
+  inset: 0;   /* shorthand for top/right/bottom/left: 0 */
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(13, 13, 43, 0.3) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+  pointer-events: none;  /* clicks pass through this layer */
+}
+
+/* Main content box — sits above particles & overlay */
+.landing-content {
+  position: relative;
+  z-index: 2;           /* above particles (z-index 0) */
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 700px;
+  width: 90%;
+}
+
+/* The giant castle icon */
+.castle-icon {
+  font-size: 5rem;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 20px rgba(201, 168, 76, 0.7));
+}
+
+/* Small text above the main title */
+.pre-title {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* THE MAIN TITLE */
+.main-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  /* clamp(min, preferred, max) — responsive font size! */
+  color: var(--color-gold);
+  line-height: 1.1;
+  margin-bottom: 8px;
+  letter-spacing: 4px;
+}
+
+/* Forces "Sorting" onto its own line on small screens */
+.title-break::after {
+  content: '\A';    /* newline character */
+  white-space: pre;
+}
+
+/* Gold horizontal divider line */
+.title-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold),
+    transparent
+  );
+  margin: 20px auto;
+  /* Width animates from 0 to 200px via Framer Motion */
+}
+
+/* Typewriter subtitle */
+.subtitle {
+  font-family: var(--font-text);
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  color: var(--color-text-dim);
+  font-style: italic;
+  margin-bottom: 32px;
+  line-height: 1.6;
+  min-height: 2em;   /* prevents layout jump while typing */
+}
+
+/* Blinking cursor after typewriter text */
+.cursor {
+  animation: blink 1s step-end infinite;
+  color: var(--color-gold);
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Row of house badges */
+.house-badges {
+  display: flex;
+  flex-wrap: wrap;        /* wrap to next line on small screens */
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+/* Individual house badge */
+.badge {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.badge:hover {
+  transform: translateY(-3px);
+}
+
+/* House badge colors */
+.badge.gryffindor {
+  background: rgba(116, 0, 1, 0.5);
+  color: #FFD700;
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+.badge.ravenclaw {
+  background: rgba(14, 26, 64, 0.7);
+  color: #aec6cf;
+  border-color: rgba(148, 107, 45, 0.5);
+}
+
+.badge.hufflepuff {
+  background: rgba(55, 46, 41, 0.7);
+  color: #ecb939;
+  border-color: rgba(236, 185, 57, 0.5);
+}
+
+.badge.slytherin {
+  background: rgba(26, 71, 42, 0.5);
+  color: #aaaaaa;
+  border-color: rgba(170, 170, 170, 0.4);
+}
+
+/* Start button extra styles */
+/* (base .magic-btn styles are in index.css) */
+.start-btn {
+  font-size: 1.1rem;
+  padding: 16px 48px;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* Small note below button */
+.footer-note {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--color-text-dim);
+  letter-spacing: 1px;
+}
+
+/* ---- FLOATING DECORATION ICONS ---- */
+/* These are positioned at random spots around the screen */
+.deco {
+  position: absolute;
+  color: var(--color-gold);
+  opacity: 0.15;
+  z-index: 1;
+  pointer-events: none;  /* can't click them */
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Each deco has different position, size, animation delay */
+.deco-1 { top: 10%; left: 8%;  font-size: 1.5rem; animation-delay: 0s;   }
+.deco-2 { top: 20%; right: 8%; font-size: 2rem;   animation-delay: 1s;   }
+.deco-3 { top: 65%; left: 5%;  font-size: 1.2rem; animation-delay: 2s;   }
+.deco-4 { top: 75%; right: 6%; font-size: 1.8rem; animation-delay: 0.5s; }
+.deco-5 { top: 45%; left: 3%;  font-size: 1rem;   animation-delay: 3s;   }
+.deco-6 { bottom: 10%; right: 5%; font-size: 2.5rem; animation-delay: 1.5s; }
+
+/* ---- MOBILE RESPONSIVE ---- */
+@media (max-width: 768px) {
+  .castle-icon  { font-size: 3.5rem; }
+  .house-badges { gap: 8px; }
+  .badge        { font-size: 0.7rem; padding: 5px 10px; }
+  .start-btn    { padding: 14px 36px; font-size: 1rem; }
+
+  /* Hide some decorations on mobile to reduce clutter */
+  .deco-5, .deco-6 { display: none; }
+}

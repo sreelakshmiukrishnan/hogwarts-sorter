@@ -1,0 +1,193 @@
+/* src/index.css */
+/* ============================================
+   GLOBAL MAGICAL THEME — applies to whole app
+   ============================================ */
+
+/* 1. Import magical Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* 2. CSS Variables — our magical color palette */
+/* Think of these like named paint colors we reuse everywhere */
+:root {
+  --color-bg: #0a0a1a;           /* deep dark navy — main background */
+  --color-bg2: #0d0d2b;          /* slightly lighter navy */
+  --color-gold: #c9a84c;         /* Hogwarts gold */
+  --color-gold-light: #f0d080;   /* lighter gold for glows */
+  --color-maroon: #740001;       /* Gryffindor maroon */
+  --color-text: #e8e0d0;         /* warm parchment white for text */
+  --color-text-dim: #a09880;     /* dimmer text for subtitles */
+
+  /* House colors */
+  --gryffindor-red: #740001;
+  --gryffindor-gold: #FFD700;
+  --slytherin-green: #1a472a;
+  --slytherin-silver: #aaaaaa;
+  --ravenclaw-blue: #0e1a40;
+  --ravenclaw-bronze: #946B2D;
+  --hufflepuff-yellow: #ecb939;
+  --hufflepuff-black: #372e29;
+
+  /* Font families */
+  --font-title: 'Cinzel Decorative', cursive;   /* for big headings */
+  --font-body: 'Cinzel', serif;                  /* for buttons, labels */
+  --font-text: 'Lora', serif;                    /* for paragraph text */
+
+  /* Glow effects */
+  --glow-gold: 0 0 20px rgba(201, 168, 76, 0.6);
+  --glow-gold-strong: 0 0 40px rgba(201, 168, 76, 0.9);
+}
+
+/* 3. Reset — remove default browser spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* makes sizing predictable */
+}
+
+/* 4. Base body styles */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-text);
+  min-height: 100vh;        /* always at least full screen height */
+  overflow-x: hidden;       /* no horizontal scrollbar */
+}
+
+/* 5. Make the React root div fill the screen */
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 6. Custom magical scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-light);
+}
+
+/* 7. Reusable glow text animation */
+/* We'll use this class on our main title */
+@keyframes glowPulse {
+  0%   { text-shadow: 0 0 10px var(--color-gold), 0 0 20px var(--color-gold); }
+  50%  { text-shadow: 0 0 25px var(--color-gold-light), 0 0 50px var(--color-gold-light); }
+  100% { text-shadow: 0 0 10px var(--color-gold), 0 0 20px var(--color-gold); }
+}
+
+.glow-text {
+  animation: glowPulse 3s ease-in-out infinite;
+  color: var(--color-gold);
+  font-family: var(--font-title);
+}
+
+/* 8. Reusable glassmorphism card style */
+/* Glassmorphism = frosted glass effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);   /* very transparent white */
+  backdrop-filter: blur(10px);              /* blur the stuff behind it */
+  border: 1px solid rgba(201, 168, 76, 0.3); /* subtle gold border */
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* 9. Reusable magical button style */
+.magic-btn {
+  background: linear-gradient(135deg, var(--color-gold), #8B6914);
+  color: #1a1000;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 50px;   /* pill shape */
+  cursor: pointer;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: var(--glow-gold);
+  transition: all 0.3s ease;  /* smooth hover effect */
+}
+
+.magic-btn:hover {
+  transform: translateY(-3px) scale(1.05); /* lifts up on hover */
+  box-shadow: var(--glow-gold-strong);
+}
+
+.magic-btn:active {
+  transform: translateY(0) scale(0.98); /* presses down on click */
+}
+
+/* 10. Floating sparkle animation — used on decorative elements */
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+
+/* 11. Fade-in animation for page transitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* 12. Mobile responsive base */
+/* On small screens (phones), reduce font sizes */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;  /* slightly smaller base on mobile */
+  }
+}
+/* =============================================
+   STEP 8 — FINAL POLISH ADDITIONS
+   ============================================= */
+
+/* Smooth scrolling everywhere */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Make sure pages sit on top of each other correctly */
+
+
+/* Better tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: rgba(201, 168, 76, 0.2);
+}
+
+/* Selection color — gold highlight when text is selected */
+::selection {
+  background: rgba(201, 168, 76, 0.35);
+  color: var(--color-gold-light);
+}
+
+/* Restore cursor on buttons and links */
+button, a {
+  cursor: none !important; /* uses our wand cursor */
+}
+
+/* Focus outline — accessibility */
+button:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+/* Prevent text from being tiny on mobile */
+input, button, select, textarea {
+  font-size: 16px;
+}

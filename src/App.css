@@ -1,0 +1,9 @@
+/* src/App.css */
+/* Styles for the main app wrapper */
+
+.app-container {
+  min-height: 100vh;       /* full screen height */
+  width: 100%;
+  position: relative;
+  overflow: hidden;        /* hide anything that spills out */
+}

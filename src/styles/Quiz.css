@@ -1,0 +1,200 @@
+/* src/styles/Quiz.css */
+/* =============================================
+   MAGICAL QUIZ SCREEN STYLES
+   ============================================= */
+
+/* Full screen quiz container */
+.quiz-container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    ellipse at center,
+    #0d0d2b 0%,
+    #050510 100%
+  );
+  padding: 20px;
+}
+
+/* Dark overlay */
+.quiz-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Centers content, limits max width */
+.quiz-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Header with icon and label */
+.quiz-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-gold);
+}
+
+.quiz-icon {
+  font-size: 1.8rem;
+  filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.7));
+}
+
+.quiz-label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+/* Progress bar section */
+.progress-container {
+  width: 100%;
+}
+
+.progress-text {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--color-text-dim);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* The grey track behind the bar */
+.progress-bar-bg {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* The gold fill that grows as you answer */
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold),
+    var(--color-gold-light)
+  );
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.6);
+}
+
+/* The question card — uses .glass-card from index.css */
+.question-card {
+  width: 100%;
+  padding: 36px 32px;
+  text-align: center;
+}
+
+/* Big emoji above the question */
+.question-emoji {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.5));
+}
+
+/* The question text */
+.question-text {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  font-weight: 600;
+}
+
+/* Grid of answer buttons — 2 columns on desktop */
+.answers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Individual answer button */
+.answer-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 12px;
+  padding: 16px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  transition: all 0.3s ease;
+  color: var(--color-text);
+}
+
+.answer-btn:hover {
+  background: rgba(201, 168, 76, 0.1);
+  border-color: rgba(201, 168, 76, 0.5);
+}
+
+/* When an answer is selected — glows gold */
+.answer-btn.selected {
+  background: rgba(201, 168, 76, 0.2);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
+}
+
+/* The A / B / C / D letter badge */
+.answer-letter {
+  min-width: 28px;
+  height: 28px;
+  background: rgba(201, 168, 76, 0.2);
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  flex-shrink: 0;  /* never shrink the letter badge */
+}
+
+.answer-btn.selected .answer-letter {
+  background: var(--color-gold);
+  color: #1a1000;
+}
+
+/* Answer text */
+.answer-text {
+  font-family: var(--font-text);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+/* Wand decoration at bottom */
+.quiz-footer {
+  font-size: 2rem;
+  color: var(--color-gold);
+  opacity: 0.4;
+  filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.5));
+}
+
+/* ---- MOBILE: stack answers to 1 column ---- */
+@media (max-width: 600px) {
+  .question-card    { padding: 24px 18px; }
+  .answers-grid     { grid-template-columns: 1fr; }
+  .question-emoji   { font-size: 2.2rem; }
+}
