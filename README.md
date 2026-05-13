@@ -19,7 +19,7 @@ A magical Harry Potter House Sorting web app built with React!
 - 🎊 React Confetti
 
 ## 🚀 Live Demo
-[Click here to try it!](https://hogwarts-sorter.netlify.app)
+[Click here to try it!](https://hogwarts-sorter.netlify.app/)
 
 ## 💻 Run Locally
 npm install
