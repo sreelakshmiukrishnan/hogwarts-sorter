@@ -1,16 +1,26 @@
-# React + Vite
+# 🧙‍♂️ Hogwarts House Sorter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A magical Harry Potter House Sorting web app built with React!
 
-Currently, two official plugins are available:
+## ✨ Features
+- 🏰 Animated magical landing page
+- 🎩 Custom animated Sorting Hat
+- 📜 8 personality quiz questions  
+- 🏆 House result reveal with confetti
+- 🎵 Background ambient music
+- ✨ Floating sparkle cursor
+- 📱 Fully mobile responsive
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Built With
+- ⚛️ React + Vite
+- 🎬 Framer Motion
+- ⭐ tsParticles
+- 🎨 React Icons
+- 🎊 React Confetti
 
-## React Compiler
+## 🚀 Live Demo
+[Click here to try it!](https://hogwarts-sorter.netlify.app)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 💻 Run Locally
+npm install
+npm run dev
